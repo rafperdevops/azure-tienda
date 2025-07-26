@@ -47,9 +47,9 @@ def upload_image():
                 "height": image.height
             }
 
-            # Subir al Blob
-            blob_client.upload_blob(image_bytes, overwrite=True)
-            print(f"Imagen cargada a Azure Blob Storage: {unique_filename}")
+            # # Subir al Blob
+            # blob_client.upload_blob(image_bytes, overwrite=True)
+            # print(f"Imagen cargada a Azure Blob Storage: {unique_filename}")
 
             # Guardar metadatos en SQL
             cnxn = pyodbc.connect(SQL_DATABASE_CONNECTION_STRING)
