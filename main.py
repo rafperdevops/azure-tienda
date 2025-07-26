@@ -7,6 +7,9 @@ from PIL import Image
 import io
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # --- Configuración Real de Azure ---
 BLOB_STORAGE_CONNECTION_STRING = os.getenv("BLOB_STORAGE_CONNECTION_STRING")
 SQL_DATABASE_CONNECTION_STRING = os.getenv("SQL_DATABASE_CONNECTION_STRING")
