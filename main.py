@@ -37,16 +37,23 @@ def upload_image():
         # Guardar en Azure SQL Database
         try:
             # Leer imagen para Pillow antes de subirla
+            # Leer los bytes del archivo
             image_bytes = image_file.read()
             image_stream = io.BytesIO(image_bytes)
+
+            # Verificar y abrir la imagen
             image = Image.open(image_stream)
+            image.verify()  # Verifica la integridad
+            image = Image.open(io.BytesIO(image_bytes))  # Reabrir para acceder a metadatos
+
+            # Obtener metadatos
             image_metadata = {
                 "format": image.format,
                 "mode": image.mode,
                 "width": image.width,
                 "height": image.height
             }
-
+            
             # # Subir al Blob
             # blob_client.upload_blob(image_bytes, overwrite=True)
             # print(f"Imagen cargada a Azure Blob Storage: {unique_filename}")
