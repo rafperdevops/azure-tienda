@@ -3,8 +3,6 @@ import uuid
 from flask import Flask, request, jsonify
 from azure.storage.blob import BlobServiceClient
 import pyodbc
-from PIL import Image
-import io
 import os
 
 from dotenv import load_dotenv
@@ -62,7 +60,8 @@ def upload_image():
             print(f"Datos de producto guardados en Azure SQL Database para {unique_filename}")
 
             return jsonify({
-                "message": "Imagen cargada y procesamiento inicial iniciado.",
+                "status": "ok",
+                "message": "Producto guardado con éxito.",
                 "image_info": image_metadata,
                 "blob_url": blob_client.url,
                 "product_id": product_id_from_sql
