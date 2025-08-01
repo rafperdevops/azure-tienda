@@ -4,6 +4,7 @@ from flask import Flask, request, jsonify
 from azure.storage.blob import BlobServiceClient
 import pyodbc
 import os
+from flask_cors import CORS
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -19,6 +20,7 @@ container_client = blob_service_client.get_container_client("productimagesstorag
 
 # Inicializar Flask
 app = Flask(__name__)
+CORS(app)  # habilita CORS para todos los dominios y rutas
 
 @app.route('/upload-image', methods=['POST'])
 def upload_image():
