@@ -15,7 +15,7 @@ SQL_DATABASE_CONNECTION_STRING = os.getenv("SQL_DATABASE_CONNECTION_STRING")
 
 # Inicializar clientes de Azure
 blob_service_client = BlobServiceClient.from_connection_string(BLOB_STORAGE_CONNECTION_STRING)
-container_client = blob_service_client.get_container_client("product-images")
+container_client = blob_service_client.get_container_client("productimagesstorage")
 
 # Inicializar Flask
 app = Flask(__name__)
